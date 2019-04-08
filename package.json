@@ -1,0 +1,9 @@
+{
+  "name": "Schoolgram_BackEnd",
+  "version": "1.0.0",
+  "description": "2019_SW_CAPSTONE",
+  "main": "index.js",
+  "repository": "https://github.com/ywan311/Schoolgram_BackEnd.git",
+  "author": "kimyoowan",
+  "license": "MIT"
+}
