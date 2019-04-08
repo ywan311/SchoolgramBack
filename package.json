@@ -33,5 +33,4 @@
     "prisma": "yarn run deploy && yarn run generate",
     "dev": "nodemon --exec babel-node src/server.js"
   }
-
 }
