@@ -1,2 +1,2 @@
-# 2019_SW_CAPSTONE
+# Schoolgram BackEnd
 # for web servies
