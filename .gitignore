@@ -61,4 +61,4 @@ typings/
 .next
 
 #prisma private information
-.yml
+*.yml
