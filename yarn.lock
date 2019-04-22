@@ -1255,6 +1255,11 @@ cli-boxes@^1.0.0:
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
   integrity sha1-T6kXw+WclKAEzWH47lCdplFocUM=
 
+cloc@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/cloc/-/cloc-2.4.0.tgz#9711bf45177a681e38acaf2f9194067bfda7475c"
+  integrity sha512-uDJwmipIYX1rjkaPYaYhvwvq7YBDgKrX1gdDRLGAH3374u/ZRC+wQBpSL+zhEWoXfxW26rDGhYkfX4YTXphK5Q==
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"

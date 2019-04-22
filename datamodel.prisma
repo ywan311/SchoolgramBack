@@ -1,5 +1,6 @@
 type User {
   id: ID! @unique
+  avatar: String
   username: String! @unique
   email: String! @unique
   firstName: String @default(value: "")
@@ -14,7 +15,7 @@ type User {
   loginSecret:String
 }
 
-type Post {
+type Post { 
   id: ID! @unique
   location: String
   caption: String!

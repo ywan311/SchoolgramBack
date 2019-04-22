@@ -65,3 +65,6 @@ typings/
 
 #generated folder
 generated
+
+#yarn setting file
+yarn.lock
