@@ -14,9 +14,11 @@ export default {
               connect: [{ id: toId }, { id: user.id }]
             }
           });
+        room.participants = await prisma.room({ id: room.id }).participants();
         }
       } else {
         room = await prisma.room({ id: roomId });
+        room.participants = await prisma.room({ id: roomId }).participants();
       }
       if (!room) {
         throw Error("Room not found");
