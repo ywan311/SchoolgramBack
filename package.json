@@ -26,7 +26,10 @@
     "nodemailer-sendgrid-transport": "^0.2.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "prisma-client-lib": "^1.30.0"
+    "prisma-client-lib": "^1.30.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-mail-form": "^1.0.3"
   },
   "scripts": {
     "deploy": "prisma deploy",
