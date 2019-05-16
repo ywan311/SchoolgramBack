@@ -5,20 +5,23 @@ const EDIT = "EDIT";
 
 export default {
   Mutation: {
-    editPost: async (_, args, { request, isAuthenticated }) => {
+    editComment: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { id, caption, location, action } = args;
+      const { text, id, action } = args;
       const { user } = request;
-      const post = await prisma.$exists.post({ id, user: { id: user.id } });
-      
-      if (post) {
+      const comment = await prisma.$exists.comment({
+        id,
+        user: { id: user.id }
+      });
+      console.log(action)
+      if (comment) {
         if (action === EDIT) {
-          return prisma.updatePost({
-            data: { caption, location },
+          return prisma.updateComment({
+            data: { text },
             where: { id }
           });
         } else if (action === DELETE) {
-          return prisma.deletePost({ id });
+          return prisma.deleteComment({ id });
         }
       } else {
         throw Error("You can't do that");
