@@ -10,6 +10,7 @@ export default {
       const { id, caption, location, action } = args;
       const { user } = request;
       const post = await prisma.$exists.post({ id, user: { id: user.id } });
+      console.log(post);
       if (post) {
         if (action === EDIT) {
           return prisma.updatePost({
@@ -20,6 +21,7 @@ export default {
           return prisma.deletePost({ id });
         }
       } else {
+        console.log(Error);
         throw Error("You can't do that");
       }
     }

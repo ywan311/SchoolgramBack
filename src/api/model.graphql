@@ -32,6 +32,8 @@ type Post {
   comments: [Comment!]!
   isLiked: Boolean!
   likeCount: Int!
+  category:Category
+  tags: [Tag!]
   createdAt: String
   updatedAt: String
 }
@@ -77,4 +79,20 @@ type Message {
   room: Room!
   createdAt: String
   updatedAt: String
+}
+
+enum Category{
+  NOUN
+  GLOCALIT
+  SOFTWAREENGINEERING
+  COMPUTERENGINEERING
+  COMUNICATIONNETWORKENGINEERING 
+}
+
+type Tag{
+  id: ID!
+  post: [Post!]!
+  name: String!
+  updatedAt: String
+  createdAt: String
 }

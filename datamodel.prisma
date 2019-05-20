@@ -1,3 +1,10 @@
+enum Category{
+  NOUN
+  GLOCALIT
+  SOFTWAREENGINEERING
+  COMPUTERENGINEERING
+  COMUNICATIONNETWORKENGINEERING 
+}
 type User {
   id: ID! @id
   avatar: String
@@ -25,6 +32,8 @@ type Post {
   files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikeOfPost", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentOfPost", onDelete: CASCADE)
+  category: Category! @default(value:NOUN)
+  tags: [Tag!] @relation(name: "TagsOfPost")
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
 }
@@ -68,6 +77,13 @@ type Message {
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
   room: Room!
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+}
+type Tag{
+  id: ID! @id
+  post: [Post!]! @relation(name:"TagsOfPost")
+  name: String! @unique
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
 }
