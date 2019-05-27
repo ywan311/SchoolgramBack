@@ -2,10 +2,12 @@ type Mutation {
   createAccount(
     username: String!
     email: String!
+    password: String!
+    salt: String
     firstName: String
     lastName: String
     bio: String
-  ): User!
+  ): Boolean!
 }
 type Query{
   Somthing:String!

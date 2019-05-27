@@ -1,5 +1,7 @@
 type User {
   id: ID!
+  password: String!
+  salt: String!
   username: String!
   avatar: String
   email: String!
