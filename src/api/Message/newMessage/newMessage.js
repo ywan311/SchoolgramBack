@@ -1,7 +1,7 @@
 import { prisma } from "../../../../generated/prisma-client";
 
 export default {
-  Subscription: {
+  Subscription: {       //실시간
     newMessage: {
       subscribe: (_, args) => {
         const { roomId } = args;
