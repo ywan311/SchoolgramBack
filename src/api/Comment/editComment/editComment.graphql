@@ -1,0 +1,5 @@
+
+
+type Mutation{
+   editComment(text: String , id: String!, action:ACTIONS!) : Comment!
+}

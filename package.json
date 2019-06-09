@@ -16,6 +16,7 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.2",
     "cloc": "^2.4.0",
+    "crypto": "^1.0.1",
     "dotenv": "^7.0.0",
     "graphql-tools": "^4.0.4",
     "graphql-yoga": "^1.17.4",

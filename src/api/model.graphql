@@ -1,7 +1,9 @@
 type User {
   id: ID!
-  avatar: String
+  password: String!
+  salt: String!
   username: String!
+  avatar: String
   email: String!
   firstName: String
   lastName: String
@@ -15,6 +17,7 @@ type User {
   followersCount: Int!
   posts: [Post!]!
   likes: [Like!]!
+  savePosts: [SavePost!]!
   comments: [Comment!]!
   rooms: [Room!]!
   loginSecret: String!
@@ -29,16 +32,27 @@ type Post {
   user: User!
   files: [File!]!
   likes: [Like!]!
+  savePosts: [SavePost!]!
   comments: [Comment!]!
+  isSaved: Boolean!
   isLiked: Boolean!
   likeCount: Int!
   category:Category
   tags: [Tag!]
+  saveCount: Int!
+  commentCount: Int!
   createdAt: String
   updatedAt: String
 }
 
 type Like {
+  id: ID!
+  user: User!
+  post: Post!
+  createdAt: String
+  updatedAt: String
+}
+type SavePost {
   id: ID!
   user: User!
   post: Post!
