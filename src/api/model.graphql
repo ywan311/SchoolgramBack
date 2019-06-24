@@ -1,17 +1,28 @@
 type User {
   id: ID!
+  password: String!
+  salt: String!
   username: String!
+  avatar: String
   email: String!
   firstName: String
   lastName: String
+  fullName: String
+  isFollowing: Boolean!
+  isSelf: Boolean!
   bio: String
   following: [User!]!
+  followingCount: Int!
   followers: [User!]!
+  followersCount: Int!
   posts: [Post!]!
   likes: [Like!]!
+  savePosts: [SavePost!]!
   comments: [Comment!]!
   rooms: [Room!]!
-  loginSecret: String
+  loginSecret: String!
+  createdAt: String
+  updatedAt: String
 }
 
 type Post {
@@ -21,13 +32,32 @@ type Post {
   user: User!
   files: [File!]!
   likes: [Like!]!
+  savePosts: [SavePost!]!
   comments: [Comment!]!
+  isSaved: Boolean!
+  isLiked: Boolean!
+  likeCount: Int!
+  category:Category
+  tags: [Tag!]
+  saveCount: Int!
+  commentCount: Int!
+  createdAt: String
+  updatedAt: String
 }
 
 type Like {
   id: ID!
   user: User!
   post: Post!
+  createdAt: String
+  updatedAt: String
+}
+type SavePost {
+  id: ID!
+  user: User!
+  post: Post!
+  createdAt: String
+  updatedAt: String
 }
 
 type Comment {
@@ -35,18 +65,24 @@ type Comment {
   text: String!
   user: User!
   post: Post!
+  createdAt: String
+  updatedAt: String
 }
 
 type File {
   id: ID!
   url: String!
   post: Post!
+  createdAt: String
+  updatedAt: String
 }
 
 type Room {
   id: ID!
   participants: [User!]!
   messages: [Message!]!
+  createdAt: String
+  updatedAt: String
 }
 
 type Message {
@@ -55,4 +91,22 @@ type Message {
   from: User!
   to: User!
   room: Room!
+  createdAt: String
+  updatedAt: String
+}
+
+enum Category{
+  NOUN
+  GLOCALIT
+  SOFTWAREENGINEERING
+  COMPUTERENGINEERING
+  COMUNICATIONNETWORKENGINEERING 
+}
+
+type Tag{
+  id: ID!
+  post: [Post!]!
+  name: String!
+  updatedAt: String
+  createdAt: String
 }

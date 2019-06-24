@@ -1,0 +1,213 @@
+input AddProjectInput {
+  name: String!
+  stage: String!
+  secrets: [String!]
+  clientMutationId: String
+}
+
+type AddProjectPayload {
+  project: Project
+  clientMutationId: String
+}
+
+type CreateEnum implements MigrationStep {
+  name: String!
+  values: [String!]!
+  type: String!
+}
+
+type CreateField implements MigrationStep {
+  model: String!
+  name: String!
+  typeName: String!
+  isRequired: Boolean!
+  isList: Boolean!
+  unique: Boolean!
+  relation: String
+  default: String
+  enum: String
+  type: String!
+}
+
+type CreateModel implements MigrationStep {
+  name: String!
+  type: String!
+}
+
+type CreateRelation implements MigrationStep {
+  name: String!
+  leftModel: String!
+  rightModel: String!
+  type: String!
+}
+
+scalar DateTime
+
+type DeleteEnum implements MigrationStep {
+  name: String!
+  type: String!
+}
+
+type DeleteField implements MigrationStep {
+  model: String!
+  name: String!
+  type: String!
+}
+
+type DeleteModel implements MigrationStep {
+  name: String!
+  type: String!
+}
+
+input DeleteProjectInput {
+  name: String!
+  stage: String!
+  clientMutationId: String
+}
+
+type DeleteProjectPayload {
+  project: Project
+  clientMutationId: String
+}
+
+type DeleteRelation implements MigrationStep {
+  name: String!
+  modelAId: String!
+  modelBId: String!
+  type: String!
+}
+
+input DeployInput {
+  name: String!
+  stage: String!
+  types: String!
+  dryRun: Boolean
+  secrets: [String!]
+  subscriptions: [FunctionInput!]
+  force: Boolean
+  clientMutationId: String
+}
+
+type DeployPayload {
+  errors: [SchemaError!]!
+  migration: Migration
+  warnings: [SchemaWarning!]!
+  clientMutationId: String
+}
+
+input FunctionInput {
+  name: String!
+  query: String!
+  url: String!
+  headers: [HeaderInput!]!
+}
+
+input HeaderInput {
+  name: String!
+  value: String!
+}
+
+type Migration {
+  projectId: String!
+  revision: Int!
+  status: String!
+  applied: Int!
+  rolledBack: Int!
+  steps: [MigrationStep!]!
+  errors: [String!]!
+  startedAt: DateTime
+  finishedAt: DateTime
+}
+
+interface MigrationStep {
+  type: String!
+}
+
+type Mutation {
+  deploy(input: DeployInput!): DeployPayload
+  addProject(input: AddProjectInput!): AddProjectPayload
+  deleteProject(input: DeleteProjectInput!): DeleteProjectPayload
+  setCloudSecret(input: SetCloudSecretInput!): SetCloudSecretPayload
+}
+
+type Project {
+  name: String!
+  stage: String!
+}
+
+type Query {
+  migrationStatus(name: String!, stage: String!): Migration!
+  listProjects: [Project!]!
+  listMigrations(name: String!, stage: String!): [Migration!]!
+  project(name: String!, stage: String!): Project!
+  serverInfo: ServerInfo!
+  generateProjectToken(name: String!, stage: String!): String!
+}
+
+type SchemaError {
+  type: String!
+  field: String
+  description: String!
+}
+
+type SchemaWarning {
+  type: String!
+  field: String
+  description: String!
+}
+
+type ServerInfo {
+  version: String!
+  commit: String!
+  primaryConnector: String!
+}
+
+input SetCloudSecretInput {
+  secret: String
+  clientMutationId: String
+}
+
+type SetCloudSecretPayload {
+  clientMutationId: String
+}
+
+type UpdateEnum implements MigrationStep {
+  name: String!
+  newName: String
+  values: [String!]
+  type: String!
+}
+
+type UpdateField implements MigrationStep {
+  model: String!
+  name: String!
+  newName: String
+  typeName: String
+  isRequired: Boolean
+  isList: Boolean
+  unique: Boolean
+  relation: String
+  default: String
+  enum: String
+  type: String!
+}
+
+type UpdateModel implements MigrationStep {
+  name: String!
+  newName: String!
+  isEmbedded: Boolean
+  type: String!
+}
+
+type UpdateRelation implements MigrationStep {
+  name: String!
+  newName: String
+  modelAId: String
+  modelBId: String
+  type: String!
+}
+
+type UpdateSecrets implements MigrationStep {
+  message: String!
+  type: String!
+}

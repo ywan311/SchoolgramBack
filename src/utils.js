@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 import sgTransport from "nodemailer-sendgrid-transport";
 import jwt from "jsonwebtoken";
 
+
 export const generateSecret = () => {
   const randomNumber = Math.floor(Math.random() * adjectives.length);
   return `${adjectives[randomNumber]} ${nouns[randomNumber]}`;
@@ -21,10 +22,14 @@ const sendMail = email => {
 
 export const sendSecretMail = (adress, secret) => {
   const email = {
-    from: "nico@prismagram.com",
+    from: "yoowanKim@skhu.com",
     to: adress,
-    subject: "🔒Login Secret for Prismagram🔒",
-    html: `Hello! Your login secret is <strong>${secret}</strong>.<br/>Copy paste on the app/website to log in`
+    subject: "🔒Login Secret for SKHUgagram🔒",
+    html: `Hi! I sincerely congratulate you 
+    on becoming a member of skhugram. Please remember the keywords required 
+    for membership verification and input. 
+    Your login secret is <strong>${secret}</strong>.
+    <br/>Copy paste on the app/website to log in`
   };
   return sendMail(email);
 };
